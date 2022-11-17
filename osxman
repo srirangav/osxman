@@ -41,19 +41,17 @@ if [ X"$1" = X"$ARG_PDF" ] ; then
     shift
 
     if [ $# -lt 1 ] ; then
-        print_usage
-        exit 1
-    fi
-
-    if [ ! -x "$PGM_MAN" ] ; then
-        print_error "$PGM_MAN not executable!" ;
+        print_usage ;
         exit 1 ;
     fi
 
-    if [ ! -x "$PGM_MANDOC" ] ; then
-        print_error "$PGM_MANDOC not executable!" ;
-        exit 1 ;
-    fi
+    for PGM in "$PGM_MAN" "$PGM_MANDOC"
+    do
+        if [ ! -x "$PGM" ] ; then
+            print_error "$PGM not executable!" ;
+            exit 1 ;
+        fi
+    done
 
     "$PGM_MANDOC" -T pdf "`$PGM_MAN -w $@`" | \
     "$PGM_OPEN" -fa Preview
@@ -76,3 +74,4 @@ fi
 
 print_usage
 exit 0
+
