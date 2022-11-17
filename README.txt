@@ -26,10 +26,22 @@ Usage:
 
 Install:
 
-    Copy osxman to a directory in your $PATH, e.g.:
+    $ make install
 
-    $ cp osxman $HOME/bin
-    $ chmod u+x $HOME/bin/osxman
+    By default, osxman is installed in /usr/local/bin.  To install
+    it in a different location, the alternate installation prefix
+    can be supplied to configure:
+
+        $ make PREFIX="<prefix>" install
+
+    For example, the following will install osxman in /opt/local:
+
+        $ make PREFIX=/opt/local install
+
+    A DESTDIR can also be specified for staging purposes (with or
+    without an alternate prefix):
+
+        $ make DESTDIR="<destdir>" [PREFIX="<prefix>"] install
 
 History:
 
