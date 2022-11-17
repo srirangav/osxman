@@ -1,0 +1,78 @@
+#!/bin/sh
+# osxman - open man pages using x-man-page:// on MacOSX
+# based on: https://scriptingosx.com/2022/11/on-viewing-man-pages-ventura-update/
+
+# global variables
+
+# external programs
+
+PGM_OPEN="/usr/bin/open"
+PGM_MAN="/usr/bin/man"
+PGM_MANDOC="/usr/bin/mandoc"
+
+# PDF mode
+
+ARG_PDF="-pdf"
+
+# url for man pages
+
+MAN_URL="x-man-page://"
+
+# functions
+
+print_usage() {
+    echo "Usage: $0 [$ARG_PDF] [section] manpage" 1>&2
+}
+
+print_error() {
+    echo "Error: " "$@" 1>&2
+}
+
+# check to see if open is executable
+
+if [ ! -x "$PGM_OPEN" ] ; then
+    print_error "$PGM_OPEN not executable!" ;
+    exit 1 ;
+fi
+
+# display man pages as PDF if -pdf is specified
+
+if [ X"$1" = X"$ARG_PDF" ] ; then
+    shift
+
+    if [ $# -lt 1 ] ; then
+        print_usage
+        exit 1
+    fi
+
+    if [ ! -x "$PGM_MAN" ] ; then
+        print_error "$PGM_MAN not executable!" ;
+        exit 1 ;
+    fi
+
+    if [ ! -x "$PGM_MANDOC" ] ; then
+        print_error "$PGM_MANDOC not executable!" ;
+        exit 1 ;
+    fi
+
+    "$PGM_MANDOC" -T pdf "`$PGM_MAN -w $@`" | \
+    "$PGM_OPEN" -fa Preview
+    exit $?
+fi
+
+# if only the man page is specified, just open it
+
+if [ $# -eq 1 ] ; then
+    exec "$PGM_OPEN" "$MAN_URL$1"
+fi
+
+# if a section is specified, open that man page
+
+if [ $# -eq 2 ] ; then
+    exec "$PGM_OPEN" "$MAN_URL$1/$2"
+fi
+
+# print a usage statement and exit
+
+print_usage
+exit 0
