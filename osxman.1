@@ -1,0 +1,22 @@
+.TH osxman 1
+.SH NAME
+osxman - open manpages in a separate window on MacOSX.
+.SH SYNOPSIS
+osxman [-pdf] [section] manpage
+.SH DESCRIPTION
+osxman opens manpages in a separate window on MacOSX.  By default,
+manpages are displayed in a separate terminal window using the
+x-man-page:// url scheme.  If an optional [section] is specified,
+the man page in that section is displayed.
+.SH OPTIONS
+.TP
+.B \-pdf
+Opens a PDF of the specified manpage.
+.TP
+.SH SEE ALSO
+man(1), mandoc(1), open(1)
+.SH PLATFORMS
+osxman has been tested on MacOSX 12.x (Monterey).  It should
+work on other versions.
+.SH HISTORY
+osxman was written by Sriranga Veeraraghavan <ranga@calalum.org>.

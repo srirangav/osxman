@@ -21,8 +21,8 @@ Usage:
     By default, osxman displays man pages in a separate terminal
     window using the x-man-page:// url scheme.
 
-    If an optional [section] is specified, then the man page
-    in that section is displayed.
+    If an optional [section] is specified, the man page in that
+    section is displayed.
 
 Install:
 
