@@ -2,6 +2,14 @@
 # osxman - open man pages using x-man-page:// on MacOSX
 # based on: https://scriptingosx.com/2022/11/on-viewing-man-pages-ventura-update/
 
+# secure file permissions
+
+umask 077
+
+# terminate on errors and unset variables
+
+set -eu
+
 # global variables
 
 # external programs

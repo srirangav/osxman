@@ -1,7 +1,7 @@
 README
 ------
 
-osxman v.0.1
+osxman v.0.2
 By Sriranga Veeraraghavan <ranga@calalum.org>
 
 osxman is a script to open man pages in a separate window
@@ -45,6 +45,7 @@ Install:
 
 History:
 
+    v.0.2.0  Minor cleanup
     v.0.1.0  Initial release
 
 License:

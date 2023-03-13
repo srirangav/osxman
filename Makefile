@@ -2,7 +2,6 @@
 
 PREFIX = /usr/local
 PGM = osxman
-PGM_REL = 0.1.0
 PGM_MAN = $(PGM).1
 PGM_BINDIR = $(DESTDIR)$(PREFIX)/bin
 PGM_MANDIR = $(DESTDIR)$(PREFIX)/man/man1
